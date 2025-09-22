@@ -1,0 +1,59 @@
+# Target function setup
+target: "DMRD"          # Toy, DMRD, CrossSection, CLs
+evaluation_mode: False
+
+# General experiment setup
+iteration: 0  # Iteration number
+max_iterations: 10
+run: 12 #[9,10,11] #[1,2,3,4,5,6,7,8] # Run number
+is_deep: False #[False, True]
+is_sparse: False # has to be false, when Deep or Std GP
+is_mlp: True   
+is_active: False # [False, True]  # Has to be false when training MLP
+is_lh: False #[False, True]
+warm_starting: True #[False, True]
+
+# Try out MLP with pretrained AL points
+is_mlp_with_al: False
+train_mlp_with_previous_al_points: False
+prepare_for_mlp: False # Use for preperation run with Std GP to select AL points for MLP lateron
+
+# Classic learning parameters
+learning_rate: 1e-3       # Learning rate
+iterations: 1000          # Number of training iterations
+
+# Basic model configuration
+initial_train_points: 300 #9000 #300 #5000 #[50,100,200,500,1000,2000]
+valid_points: 500 #1000 #200 #1000
+n_dim: 19 #[11,12,13,14] #[15,19] #[6,7,8,9,10]     # Number of input dimensions
+n_new_points: 200 #[500, 750, 1000, 1250, 1500] #[1,15,40,100]     # New points added per iteration
+
+# Threshold optimization
+epsilon: 0 #[0, 0.5, 2.0] # Factor for gaussian loss penalty, to focus training on threshold
+tolerance_sampling: 0 #[0, 1.5, 3.0] # Closeness relevancy: small -> stronger focus, but important points may be missing, big -> broad focus, less targeted
+proximity_sampling: 0.1 #[0.05, 0.1, 0.2] # Gauss proximity weighting: small -> only very close point count, bigger -> smoother weighting
+beta: 50 #[5, 10, 20, 50] # Gibbs sampling temperature: high(>50) -> deterministic, low (<10) -> probabilistic 
+blur: 0.15 #[0.05, 0.15, 0.25] # Entropy smoothing: too small -> instable, too big -> imprecise
+
+# GP parameters
+lengthscale: 1.0 #[1.0, 2.0, 5.0] #[0.001, 0.01, 0.1, 1.0, 2.0, 5.0] # [0.001, 0.01, 0.1, 1.0, 2.0, 5.0]
+noise: 1e-2 #[1e-4, 1e-3, 5e-3, 2e-2]
+jitter: 1e-3
+kernel: "RBF" #["RBF", "Matern", "RQK", "SpectralMixture", "RBF+Matern"]  
+m_nu: 1.5        # ν parameter for Matern
+num_mixtures: 4
+use_ard: True #[True, False]
+
+# Deep Kernel Learning
+use_dkl: False #[False, True]
+feature_dim: 2 #[8,16] #[5,7,9]
+
+# Deep/ Sparse GP parameters
+batch_size: 256
+num_inducing_max: 512 #[1024, 2048] #512
+num_inducing_points: 128
+num_samples: 8 #[12,16,20,24] 
+
+# Deep GP parameters
+num_hidden_dims: 10 #[10,12,14,16] #[2,4,6,8,10] #[5, 10, 15, 20]
+num_middle_dims: 0 #[0,2,4,6,8]

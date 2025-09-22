@@ -1,0 +1,31 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyc
+
+# Environment
+*.env
+*.venv
+*.yml
+*.lock
+
+# Outputs
+outputs/
+*.png
+*.gif
+*.csv
+*.log
+*.out
+*.err
+*.json
+
+# Checkpoints
+*.pth
+*.pkl
+*.npz
+*.npy
+
+# Specific paths
+model/old_code
+myenv
+.vscode

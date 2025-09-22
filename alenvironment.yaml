@@ -1,0 +1,21 @@
+name: ALenv
+channels:
+  - pytorch
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy
+  - pandas
+  - matplotlib
+  - scipy
+  - scikit-learn
+  - pytorch=2.3.1
+  - torchaudio=2.3.1
+  - torchvision=0.18.1
+  - uproot
+  - ipykernel
+  - pip
+  - pip:
+      - gpytorch==1.12
+      - awkward==2.6.6
+      - linear-operator==0.5.2
