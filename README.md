@@ -9,7 +9,9 @@
 
 ## Installation
 
-git clone --recurse-submodules git@github.com:dominikvoss95/active-learning-pmssm.git
+git clone --recurse-submodules https://github.com/dominikvoss95/active-learning-pmssm.git
+
+if you clone first, you have to execute git submodule update --init --recursive afterwards
 
 ## On Startup
 
