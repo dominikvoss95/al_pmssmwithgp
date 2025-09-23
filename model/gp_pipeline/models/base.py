@@ -132,6 +132,9 @@ class GPModelPipeline:
                 self.thr = json.load(f)["threshold"]
             print(f"[INFO] Loaded threshold from {path}: {self.thr:.4f}")
         else:
+            train_dir = f'/u/{USER}/al_pmssmwithgp/model/training_data'
+            if not os.path.exists(train_dir):
+                os.makedirs(train_dir, exist_ok=True)
             self.thr = self._estimate_threshold()
             with open(path, "w") as f:
                 json.dump({"threshold": self.thr}, f)
