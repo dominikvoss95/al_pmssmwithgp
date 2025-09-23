@@ -9,7 +9,7 @@
 
 ## Installation
 
-git clone --recurse-submodules https://github.com/dominikvoss95/active-learning-pmssm.git
+git clone --recurse-submodules https://github.com/dominikvoss95/al_pmssmwithgp.git
 
 if you clone first, you have to execute git submodule update --init --recursive afterwards
 
@@ -23,6 +23,9 @@ conda activate ALenv
 
 ## Configuration
 Use the config yamls to configure the training (There are three configs availaible to run seperate jobs)
+
+ADJUST PATHS
+change username
 
 CREATE TEST DATA for DMRD or CrossSection:
 - First create true test data just configure 1 run per iteration, in which you want to train
@@ -54,12 +57,10 @@ module load gcc/14 rocm/6.3 openmpi_gpu/5.0 python-waterboa/2024.06
 activate environment:
 conda activate ALenv
 
-and run script with:
-python -u gp_pipeline/main.py --config /u/dvoss/al_pmssmwithgp/model/gp_pipeline/config/config.yaml
-
-python -u gp_pipeline/main.py --config /u/dvoss/al_pmssmwithgp/model/gp_pipeline/config/config2.yaml
-
-python -u gp_pipeline/main.py --config /u/dvoss/al_pmssmwithgp/model/gp_pipeline/config/config3.yaml
+navigate to model directory and run script with:
+python -u gp_pipeline/main.py --config gp_pipeline/config/config.yaml
+python -u gp_pipeline/main.py --config gp_pipeline/config/config2.yaml
+python -u gp_pipeline/main.py --config gp_pipeline/config/config3.yaml
 
 to exit: 
 exit
@@ -71,9 +72,9 @@ cd model/
 chmod -R a=rwx slurm/
 
 submit batch jobs:
-/u/dvoss/al_pmssmwithgp/model/slurm/submit_jobs_viper.sh
-/u/dvoss/al_pmssmwithgp/model/slurm/submit_jobs2.sh
-/u/dvoss/al_pmssmwithgp/model/slurm/submit_jobs3.sh
+slurm/submit_jobs_viper.sh
+slurm/submit_jobs2.sh
+slurm/submit_jobs3.sh
 
 ## Authors and acknowledgment
 Thanks to Jonas Wuerzinger and Lukas Heinrich.
