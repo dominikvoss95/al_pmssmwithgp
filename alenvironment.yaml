@@ -19,3 +19,4 @@ dependencies:
       - gpytorch==1.12
       - awkward==2.6.6
       - linear-operator==0.5.2
+      - corner

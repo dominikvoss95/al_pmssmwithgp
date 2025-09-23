@@ -1,2 +1,3 @@
+[submodule "Run3ModelGen"]
 	path = Run3ModelGen
 	url = https://gitlab.cern.ch/jwuerzin/Run3ModelGen.git
