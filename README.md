@@ -21,6 +21,13 @@ conda env create -f alenvironment.yaml
 activate environment:
 conda activate ALenv
 
+SETUP RUN3MODELGEN:
+```pixi shell
+cmake -S source -B build
+cmake --build build -j8
+source build/setup.sh
+```
+
 ## Configuration
 Use the config yamls to configure the training (There are three configs availaible to run seperate jobs)
 
