@@ -16,13 +16,13 @@ if you clone first, you have to execute git submodule update --init --recursive 
 ## On Startup
 
 INSTALL CONDA ENVIRONMENT:
+```bash
 conda env create -f alenvironment.yaml
-
-activate environment:
-conda activate ALenv
+```
 
 SETUP RUN3MODELGEN:
-```pixi shell
+```bash
+pixi shell
 cmake -S source -B build
 cmake --build build -j8
 source build/setup.sh
@@ -56,18 +56,18 @@ EVALUATION:
 FOR DEBUGGING SESSION 15min  (viper)
 
 for starting a debugging session:
+```bash
 srun -n 1 --mem=3G --partition=gpudev --time=00:15:00 --gres=gpu:1 --pty /bin/bash
-
-loading environment:
 module load gcc/14 rocm/6.3 openmpi_gpu/5.0 python-waterboa/2024.06
-
-activate environment:
 conda activate ALenv
+```
 
 navigate to model directory and run script with:
+```bash
 python -u gp_pipeline/main.py --config gp_pipeline/config/config.yaml
 python -u gp_pipeline/main.py --config gp_pipeline/config/config2.yaml
 python -u gp_pipeline/main.py --config gp_pipeline/config/config3.yaml
+```
 
 to exit: 
 exit
@@ -75,13 +75,16 @@ exit
 FOR SLURM BATCH JOBS:
 
 make folder executeable:
-cd model/
+```bash
 chmod -R a=rwx slurm/
+```
 
 submit batch jobs:
+```bash
 slurm/submit_jobs_viper.sh
 slurm/submit_jobs2.sh
 slurm/submit_jobs3.sh
+```
 
 ## Authors and acknowledgment
 Thanks to Jonas Wuerzinger and Lukas Heinrich.
